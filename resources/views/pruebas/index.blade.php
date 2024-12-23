@@ -6,9 +6,27 @@
 @section('content')
 <br>
 <div class="container text-center">
-    PRUEBAS
+    
+    <div class="row justify-content-md-center">
+        @forelse($pruebas as $prueba)
+        <div class="col-lg-4">
+            <div>
+                <h6>{{$prueba->nombre}}</h6>
+                    @forelse($prueba->herramientas as $herramienta)
+                        <p>{{$herramienta->nombre}}</p>
+                        @empty
+                        sin herramientas....
+                    @endforelse
+                
+            </div>        
+        </div>
+ @empty
+        Sin registro de pruebas...
+        @endforelse
+    </div>
+          
 <br>
-<button class="btn btn-success">Crear</button>
+<a href="{{route('prueba.create')}}"><button class="btn btn-success">Crear</button></a>
 </div>
 
 <br>

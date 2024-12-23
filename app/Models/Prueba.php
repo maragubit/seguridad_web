@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Prueba extends Model
 {
     protected $fillable = [
         'nombre',
+        'referencia',
         'categoria_id',
         'objetivo',
     ];
@@ -19,8 +20,8 @@ class Prueba extends Model
         return $this->hasOne(Categoria::class);
     }
     //relación de asociación herramienta con prueba
-    function herramientas():HasMany
+    function herramientas():BelongsToMany
     {
-        return $this->hasMany(Herramienta::class);
+        return $this->belongsToMany(Herramienta::class);
     }
 }

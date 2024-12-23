@@ -54,7 +54,7 @@
                     <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
                 <div>
-                    <a class="text-light" href="{{route('profile.edit')}}"><i class="bi bi-person-circle"></i> {{ Auth::user()->name }}</a>
+                    @auth<a class="text-light" href="{{route('profile.edit')}}"><i class="bi bi-person-circle"></i> {{ Auth::user()->name }}</a>@endauth
                 </div>
             </div>
         </div>

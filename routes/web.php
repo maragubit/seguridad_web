@@ -8,7 +8,6 @@ use App\Http\Controllers\Prueba\PruebaController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categoria;
 use App\Models\Proyecto;
-
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -33,6 +32,8 @@ Route::group(['prefix' => 'proyectos'], function() {
 ############################################################
 Route::group(['prefix' => 'pruebas'], function() {
 Route::get('/pruebas', [PruebaController::class, 'index'])->name('prueba.index');
+Route::get('/create', [PruebaController::class, 'create'])->name('prueba.create');
+Route::post('/create', [PruebaController::class, 'store']);
 });
 
 
@@ -51,3 +52,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+

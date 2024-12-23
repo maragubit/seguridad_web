@@ -51,5 +51,9 @@
             </x-primary-button>
         </div>
     </form>
+    <div>
+    <a href="{{route('index')}}"><button class="btn btn-dark">Volver</button></a>
+</div>
 </x-guest-layout>
+
 @endsection

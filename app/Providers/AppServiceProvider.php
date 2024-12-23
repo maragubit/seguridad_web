@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,14 +12,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        /* if (env(key: 'APP_ENV') !=='local') {
-            URL::forceScheme(scheme:'https');
-          } */
+        //
     }
-     /* Bootstrap any application services.
+
+    /**
+     * Bootstrap any application services.
      */
-    public function boot()
-{
-    Schema::defaultStringLength(191);
-}
+    public function boot(): void
+    {
+        Vite::prefetch(concurrency: 3);
+    }
 }

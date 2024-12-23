@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Herramienta extends Model
 {
@@ -14,8 +14,8 @@ class Herramienta extends Model
     ];
 
     //relación de asociación herramienta con prueba
-    function pruebas():HasMany
+    function pruebas():BelongsToMany
     {
-        return $this->hasMany(Prueba::class);
+        return $this->belongsToMany(Prueba::class);
     }
 }
