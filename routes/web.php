@@ -5,6 +5,7 @@ use App\Http\Controllers\CoreController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Proyecto\ProyectoController;
 use App\Http\Controllers\Prueba\PruebaController;
+use App\Http\Controllers\Herramienta\HerramientaController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Categoria;
 use App\Models\Proyecto;
@@ -34,7 +35,20 @@ Route::group(['prefix' => 'pruebas'], function() {
 Route::get('/pruebas', [PruebaController::class, 'index'])->name('prueba.index');
 Route::get('/create', [PruebaController::class, 'create'])->name('prueba.create');
 Route::post('/create', [PruebaController::class, 'store']);
+Route::get('/edit/{prueba}', [PruebaController::class, 'edit'])->name('prueba.edit');
+Route::put('/update/{prueba}', [PruebaController::class, 'update'])->name(name:'prueba.update');
 });
+
+############################################################
+##                       Herramientas                         ##
+############################################################
+Route::group(['prefix' => 'herramientas'], function() {
+    Route::get('', [HerramientaController::class, 'index'])->name('herramienta.index');
+    Route::get('/create', [HerramientaController::class, 'create'])->name('herramienta.create');
+    Route::post('/create', [HerramientaController::class, 'store']);
+    Route::get('/edit/{herramienta}', [HerramientaController::class, 'edit'])->name('herramienta.edit');
+    Route::put('/update/{herramienta}', [HerramientaController::class, 'update'])->name(name:'herramienta.update');
+    });
 
 
 

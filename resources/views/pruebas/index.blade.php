@@ -11,7 +11,7 @@
         @forelse($pruebas as $prueba)
         <div class="col-lg-4">
             <div>
-                <h6>{{$prueba->nombre}}</h6>
+                <h6>{{$prueba->nombre}} <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-gear"></i></a></h6>
                     @forelse($prueba->herramientas as $herramienta)
                         <p>{{$herramienta->nombre}}</p>
                         @empty

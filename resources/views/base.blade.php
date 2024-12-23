@@ -86,7 +86,7 @@
                             <a class="nav-link" href="{{ route('proyecto.misproyectos') }}">Mis proyecto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('proyecto.misproyectos') }}">Herramientas</a>
+                            <a class="nav-link" href="{{ route('herramienta.index') }}">Herramientas</a>
                         </li>
                         @endauth
                         <li class="nav-item">
@@ -172,13 +172,6 @@
                             <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
                         </li>
                     </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
                 </div>
             </div>
         </div>
