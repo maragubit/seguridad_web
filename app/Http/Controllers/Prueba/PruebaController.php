@@ -14,9 +14,10 @@ class PruebaController extends Controller
     function index()
     {
         $object = Prueba::all();
-
+        $categorias= Categoria::all();
         $contexto=[
             "pruebas"=>$object,
+            "categorias"=>$categorias,
         ];
         return view("pruebas.index",$contexto);
     } 
@@ -80,5 +81,8 @@ class PruebaController extends Controller
         ]);
         $prueba->update($put);
         return redirect()->route('prueba.index');
+    }
+    public function show(Prueba $prueba){
+        return view('pruebas.show',["prueba"=>$prueba,]);
     }
 }

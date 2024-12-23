@@ -6,7 +6,7 @@
 @section('content')
 <br>
 <div class="container text-center">
-<table style="width:95%;" id="tabla_proyectos" class="display">
+<table style="width:95%;" id="tabla_proyectos" class="display nowrap">
     <thead>
     <tr>
         <th> Nombre</th>

@@ -37,6 +37,7 @@ Route::get('/create', [PruebaController::class, 'create'])->name('prueba.create'
 Route::post('/create', [PruebaController::class, 'store']);
 Route::get('/edit/{prueba}', [PruebaController::class, 'edit'])->name('prueba.edit');
 Route::put('/update/{prueba}', [PruebaController::class, 'update'])->name(name:'prueba.update');
+Route::get('/show/{prueba}', [PruebaController::class, 'show'])->name('prueba.show');
 });
 
 ############################################################

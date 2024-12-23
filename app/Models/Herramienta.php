@@ -18,4 +18,6 @@ class Herramienta extends Model
     {
         return $this->belongsToMany(Prueba::class);
     }
+
+    
 }

@@ -74,7 +74,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse   d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                     
@@ -85,12 +85,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('proyecto.misproyectos') }}">Mis proyecto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('herramienta.index') }}">Herramientas</a>
-                        </li>
+                        
                         @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('prueba.index')}}">Pruebas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('herramienta.index') }}">Herramientas</a>
                         </li>
                         
                         @auth

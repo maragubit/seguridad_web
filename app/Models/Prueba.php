@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Prueba extends Model
@@ -15,9 +15,9 @@ class Prueba extends Model
         'objetivo',
     ];
 
-    public function categoria():HasOne
+    public function categoria():BelongsTo
     {
-        return $this->hasOne(Categoria::class);
+        return $this->belongsTo(Categoria::class);
     }
     //relación de asociación herramienta con prueba
     function herramientas():BelongsToMany

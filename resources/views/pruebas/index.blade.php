@@ -8,20 +8,24 @@
 <div class="container text-center">
     
     <div class="row justify-content-md-center">
-        @forelse($pruebas as $prueba)
-        <div class="col-lg-4">
-            <div>
-                <h6>{{$prueba->nombre}} <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-gear"></i></a></h6>
-                    @forelse($prueba->herramientas as $herramienta)
-                        <p>{{$herramienta->nombre}}</p>
+
+        @forelse($categorias as $categoria)
+        <div class="col-lg-4 mb-3">
+            <div class="pruebasList">
+                <h6>{{$categoria->nombre}} </h6>
+                <img src="/img/categorias/{{$categoria->url}}" class="categorias rounded-circle border img-fluid" 
+                alt="{{ $categoria->nombre }}"></img>
+                    
+                    @forelse($categoria->pruebas as $prueba)
+                        <p><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-gear"></i></a></h6></p>
                         @empty
-                        sin herramientas....
+                        <p>sin pruebas....</p>
                     @endforelse
                 
             </div>        
         </div>
  @empty
-        Sin registro de pruebas...
+        Sin registro de categorias...
         @endforelse
     </div>
           

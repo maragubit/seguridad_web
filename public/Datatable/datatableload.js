@@ -114,6 +114,7 @@ $(document).ready( function () {
     $('#tabla_proyectos').DataTable(
       {
       "aaSorting": [],
+      "scrollX": true,
       "pageLength": 10,
       "language": {
                   "lengthMenu": "Mostrar _MENU_ proyectos por página",
