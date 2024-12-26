@@ -24,4 +24,13 @@ class Prueba extends Model
     {
         return $this->belongsToMany(Herramienta::class);
     }
+    public function proyectos(): BelongsToMany
+    {
+        return $this->belongsToMany(Proyecto::class, 'proyecto_prueba')->withPivot('superada')->withTimestamps();
+                         
+    }
 }
+/* ejemplo de cómo acceder a la columna de la tabla pivote:
+foreach ($proyecto->pruebas as $prueba) {
+    echo "Prueba: {$prueba->id}, Superada: {$prueba->pivot->superada}";
+} */

@@ -13,15 +13,21 @@
         <div class="col-lg-4 mb-3">
             <div class="pruebasList">
                 <h6>{{$categoria->nombre}} </h6>
-                <img src="/img/categorias/{{$categoria->url}}" class="categorias rounded-circle border img-fluid" 
+                <hr>
+                <img src="/img/categorias/{{$categoria->url}}" style="max-height:200px !important" class="card-img img-fluid" 
                 alt="{{ $categoria->nombre }}"></img>
-                    
-                    @forelse($categoria->pruebas as $prueba)
-                        <p><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-gear"></i></a></h6></p>
+                <hr>
+                <table class="table table-striped">    
+                @forelse($categoria->pruebas as $prueba)
+                        <tr>
+                        <td><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></td>
+                        <td>{{$prueba->referencia}}</td>
+                        <td> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-pencil-square"></i></a></td>
+                        </tr>
                         @empty
                         <p>sin pruebas....</p>
                     @endforelse
-                
+                </table>
             </div>        
         </div>
  @empty

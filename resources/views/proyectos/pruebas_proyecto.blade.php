@@ -6,16 +6,11 @@
 @section('content')
 <br>
 <div class="container  text-center mt-2">
-<!-- Modal -->
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-        </div>
-    </div>
+    <h3><u>Pruebas de {{$categoria->nombre}}</u></h3>
+    <br>
+<h4>{{$proyecto->nombre}} <stroong>({{$total_superadas}}/{{$total}})</strong></h4>
 
-
+@forelse ($categoria->pruebas as $prueba)
 
     <!-- Open Content -->
     <section class="bg-light">
@@ -23,8 +18,17 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid"  src="/img/categorias/{{$prueba->categoria->url}}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="/img/categorias/{{$prueba->categoria->url}}" alt="Card image cap" id="product-detail">
                     </div>
+                    @php
+                        // Verificar si la prueba está asociada al proyecto
+                        $pivot = $prueba->proyectos->firstWhere('id', $proyecto->id)->pivot ?? null;
+                    @endphp
+                    @if ($pivot && $pivot->superada)
+                    <a href="{{route('proyecto.prueba_superada', ['proyecto' => $proyecto, 'prueba' => $prueba,'superada'=>0])}}"><button class="btn btn-danger btn-lg"> Marcar prueba como fallida </button></a>
+                    @else
+                    <a href="{{route('proyecto.prueba_superada', ['proyecto' => $proyecto, 'prueba' => $prueba,'superada'=>1])}}"><button class="btn btn-success btn-lg"> Marcar prueba como superada </button></a>
+                    @endif
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
@@ -60,6 +64,16 @@
                                 @endforelse
                                 
                             </ul>
+                            
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><p><strong>Superada:</strong></p>
+                                </li>
+                                @if ($pivot && $pivot->superada)
+                                <li class="list-inline-item"><i class="bi bi-check2" style="color:green"></i></li>
+                                @else
+                                <li class="list-inline-item"><i class="bi bi-x-lg" style="color:red"></i></li>
+                                @endif
+                            </ul>
 
                             
 
@@ -69,9 +83,9 @@
             </div>
         </div>
     </section>
+    @empty
+    @endforelse
     <!-- Close Content -->
 </div>
-
-<br>
 
 @endsection

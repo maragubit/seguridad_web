@@ -27,6 +27,9 @@ Route::group(['prefix' => 'proyectos'], function() {
     Route::get('/borrar/{proyecto}', [ProyectoController::class, 'delete'])->name(name:'proyecto.delete');
     Route::get('/edit/{proyecto}', [ProyectoController::class, 'edit'])->name(name:'proyecto.edit');
     Route::post('/update/{proyecto}', [ProyectoController::class, 'update'])->name(name:'proyecto.update');
+    Route::get('/pruebas/{categoria}/proyecto/{proyecto}',[ProyectoController::class, 'pruebas_proyecto'])->name(name:'proyecto.pruebas');
+    Route::get('/{proyecto}/{prueba}/{superada}', [ProyectoController::class, 'prueba_superada'])->name('proyecto.prueba_superada');
+
 });
 ############################################################
 ##                       Pruebas                         ##

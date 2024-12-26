@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Proyecto extends Model
 {
     protected $fillable = [
@@ -18,6 +18,11 @@ class Proyecto extends Model
     function user():BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function pruebas(): BelongsToMany
+    {
+        return $this->belongsToMany(Prueba::class, 'proyecto_prueba')->withPivot('superada')->withTimestamps();        
     }
 
 }
