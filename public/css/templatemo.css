@@ -212,6 +212,11 @@ Categorias
    */
 }
 
+.descripcion {
+  height: 100px;
+  overflow-y: scroll;
+}
+
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }

@@ -8,11 +8,13 @@
 <div class="container text-center">
     
     <div class="row justify-content-md-center">
-        @forelse($herramientas as $prueba)
+        @forelse($herramientas as $herramienta)
         <div class="col-lg-4">
             <div>
-                <h6>{{$prueba->nombre}} <a href="{{route ('herramienta.edit', $prueba)}}"><i class="bi bi-gear"></i></a></h6>
-                    
+                <h6>{{$herramienta->nombre}} <a href="{{route ('herramienta.edit', $herramienta)}}"><i class="bi bi-gear"></i></a></h6>
+                <div class="descripcion mb-5">
+                    <p>{{$herramienta->descripcion}}</p>
+                </div>
             </div>        
         </div>
  @empty
