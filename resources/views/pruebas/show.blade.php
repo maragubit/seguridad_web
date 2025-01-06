@@ -52,7 +52,7 @@
                             <p>{{$prueba->objetivo}}</p>
 
                             <h6>Recomendaciones para realizar la prueba:</h6>
-                            <p>{{$prueba->recomendaciones}}</p>
+                            <p class="recomendaciones">{{$prueba->recomendaciones}}</p>
 
                             <h6>Herramientas recomendadas:</h6>
                             <ul class="list-unstyled pb-3">
