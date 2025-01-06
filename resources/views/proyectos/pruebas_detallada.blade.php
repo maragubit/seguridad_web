@@ -1,17 +1,11 @@
- <!-- resources/views/home.blade.php -->
- @extends('base')
+@extends('base')
 
 @section('title', 'Seguridad web')
 
 @section('content')
 <br>
 <div class="container  text-center mt-2">
-    <h3><u>Pruebas de {{$categoria->nombre}}</u></h3>
-    <br>
-<h4>{{$proyecto->nombre}} <strong>({{$total_superadas}}/{{$total}})</strong></h4>
-
-@forelse ($categoria->pruebas as $prueba)
-
+    <h1>{{$proyecto->nombre}}</h1>
     <!-- Open Content -->
     <section class="bg-light">
         <div class="container pb-5">
@@ -20,15 +14,6 @@
                     <div class="card mb-3">
                         <img class="card-img img-fluid" src="/img/categorias/{{$prueba->categoria->url}}" alt="Card image cap" id="product-detail">
                     </div>
-                    @php
-                        
-                        $pivot = $prueba->proyectos->firstWhere('id', $proyecto->id)->pivot ?? null;
-                    @endphp
-                    @if ($pivot && $pivot->superada)
-                    <a href="{{route('proyecto.prueba_superada', ['proyecto' => $proyecto, 'prueba' => $prueba,'superada'=>0])}}"><button class="btn btn-danger btn-lg"> Marcar prueba como fallida </button></a>
-                    @else
-                    <a href="{{route('proyecto.prueba_superada', ['proyecto' => $proyecto, 'prueba' => $prueba,'superada'=>1])}}"><button class="btn btn-success btn-lg"> Marcar prueba como superada </button></a>
-                    @endif
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
@@ -64,33 +49,43 @@
                                 @endforelse
                                 
                             </ul>
-                            
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><p><strong>Superada:</strong></p>
-                                </li>
-                                @if ($pivot && $pivot->superada)
-                                <li class="list-inline-item"><i class="bi bi-check2" style="color:green"></i></li>
-                                @else
-                                <li class="list-inline-item"><i class="bi bi-x-lg" style="color:red"></i></li>
-                                @endif
-                            </ul>
-
-                            
-                            <ul class="list-unstyled pb-3">
-                                <li><a href="{{route ('proyecto.prueba_detallada',['proyecto' => $proyecto, 'prueba' => $prueba])}}"><button class="btn btn-success btn-lg">Realizar prueba para el informe</button></a></li>
-                            </ul>
-
-                            
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    @empty
-    @endforelse
     <!-- Close Content -->
-</div>
+<form method="POST" action="{{route ('proyecto.post_prueba_detallada', $proyecto_prueba)}}">
+    @csrf
+    <!-- Campo de realizacion -->
+    <label for="realizacion" class="mb-1">¿Cómo vas a realizar la prueba?:</label>
+    <textarea id="realizacion" name="realizacion">@if ($proyecto_prueba->realizacion){{$proyecto_prueba->realizacion}}@endif</textarea>
 
+    <!-- Campo de bastionado -->
+    <label for="bastionado" class="mb-1 mt-5">¿Qué medidas de seguridad has tomado para corregirla?</label>
+    <textarea id="bastionado" name="bastionado">@if ($proyecto_prueba->bastionado){{$proyecto_prueba->bastionado}}@endif</textarea>
+
+    <!-- Campo de observaciones -->
+    <label for="observacion" class="mb-3 mt-5">Observaciones:</label><br>
+    <textarea id="observacion" class="form-control" name="observación">@if ($proyecto_prueba->observación){{$proyecto_prueba->observación}}@endif</textarea>
+
+    <button type="submit" class="btn btn-success btn-lg mt-3">Guardar cambios en el informe</button>
+</form>
+</div>
+<br>
+<script>
+    // Inicializar CKEditor en los campos de texto
+    ClassicEditor
+        .create(document.querySelector('#realizacion'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#bastionado'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

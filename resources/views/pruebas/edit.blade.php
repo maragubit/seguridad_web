@@ -83,7 +83,18 @@
             >{{ old('objetivo', $prueba->objetivo) }}</textarea>
         </div>
         <br>
-
+        <!-- Campo para recomendaciones -->
+        <div class="form-group">
+            <textarea 
+                name="recomendaciones" 
+                id="recomendaciones" 
+                style="width:600px !important" 
+                placeholder="Recomendaciones para realizar la prueba" 
+                rows="4" 
+                
+            >{{ old('recomendaciones', $prueba->recomendaciones) }}</textarea>
+        </div>
+        <br>
         <!-- Botón de envío -->
         <button class="btn btn-success" type="submit">Actualizar</button>
     </form>

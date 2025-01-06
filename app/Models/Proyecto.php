@@ -22,7 +22,7 @@ class Proyecto extends Model
 
     public function pruebas(): BelongsToMany
     {
-        return $this->belongsToMany(Prueba::class, 'proyecto_prueba')->withPivot('superada')->withTimestamps();        
+        return $this->belongsToMany(Prueba::class, 'proyecto_prueba')->withPivot('superada','realizacion','bastionado','observación')->withTimestamps();        
     }
 
 }

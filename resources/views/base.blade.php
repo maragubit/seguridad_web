@@ -32,6 +32,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="/js/templatemo.js"></script>
     <script src="/js/custom.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
     <!-- End Script -->
     
 </head>
@@ -128,8 +129,8 @@
                     <h2 class="h2 text-success border-bottom pb-3 border-light logo">Seguridad web</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            <i class="fas fa-rocket"></i>
+                            The bridge | proyecto final
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
@@ -137,7 +138,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:maragubit@gmail.com">maragubit@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -147,8 +148,6 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Home</a></li>
                         <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
                     </ul>
                 </div>
 

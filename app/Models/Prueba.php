@@ -13,6 +13,7 @@ class Prueba extends Model
         'referencia',
         'categoria_id',
         'objetivo',
+        'recomendaciones',
     ];
 
     public function categoria():BelongsTo
@@ -26,7 +27,7 @@ class Prueba extends Model
     }
     public function proyectos(): BelongsToMany
     {
-        return $this->belongsToMany(Proyecto::class, 'proyecto_prueba')->withPivot('superada')->withTimestamps();
+        return $this->belongsToMany(Proyecto::class, 'proyecto_prueba')->withPivot('realizacion', 'bastionado', 'superada', 'observación')->withTimestamps();
                          
     }
 }

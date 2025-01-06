@@ -47,13 +47,17 @@
         </select>
         <p>Puedes seleccionar varias herramientas manteniendo presionada la tecla Ctrl (Windows) o Cmd (Mac) mientras haces clic.</p>
         </div>
-
+        
         <!-- Campo para objetivo -->
         <div class="form-group">
         <textarea name="objetivo" style="width:600px !important" id="objetivo" placeholder="objetivo de la prueba" rows="4" required></textarea>
         </div>
         <br>
-        
+        <!-- Campo para recomendaciones -->
+        <div class="form-group">
+        <textarea name="recomendaciones" style="width:600px !important" id="recomendaciones" placeholder="recomendaciones para realizar la prueba" rows="4"></textarea>
+        </div>
+        <br>
         <!-- Botón de envío -->
         <button class="btn btn-success" type="submit">Guardar</button>
     </form>

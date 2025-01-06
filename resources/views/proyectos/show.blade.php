@@ -6,7 +6,7 @@
 @section('content')
 <br>
 <div class="container  text-center mt-2">
-<h4>Seguridad de la web: {{$proyecto->url}} <button class="btn btn-dark"><i class="bi bi-filetype-pdf"></i></button></h4>
+<h4>Seguridad de la web: {{$proyecto->url}} <a href="{{route ('informe.pdf', $proyecto)}}"><button class="btn btn-dark"><i class="bi bi-filetype-pdf"></i></button></a></h4>
 <br>
 
 <div class="row">

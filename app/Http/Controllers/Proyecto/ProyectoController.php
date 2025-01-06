@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Proyecto;
 use App\Models\Categoria;
 use App\Models\Prueba;
+use App\Models\ProyectoPrueba;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class ProyectoController extends Controller
 {
@@ -73,7 +76,7 @@ class ProyectoController extends Controller
     }
 
     public function pruebas_proyecto(Categoria $categoria,Proyecto $proyecto){
-
+        
         $total = $categoria->pruebas->count();
         $total_superadas=0;
         $pruebas = $proyecto->pruebas->where('categoria_id', $categoria->id);
@@ -92,6 +95,8 @@ class ProyectoController extends Controller
         ];
         return view ("proyectos.pruebas_proyecto",$contexto);
     }
+    
+    
     public function prueba_superada(Proyecto $proyecto, Prueba $prueba, $superada)
     {
         // Convertir $superada en booleano para mayor seguridad
@@ -105,5 +110,38 @@ class ProyectoController extends Controller
 
         // Redirigir a la página anterior
         return redirect()->back()->with('success', 'Estado de la prueba actualizado');
+    }
+
+
+    function prueba_detallada(Proyecto $proyecto, Prueba $prueba)
+    {
+        $proyecto_prueba = ProyectoPrueba::firstOrCreate(
+            [
+                'proyecto_id' => $proyecto->id,
+                'prueba_id' => $prueba->id,
+            ]);
+        $contexto=[
+            "proyecto"=>$proyecto,
+            "prueba"=>$prueba,
+            "proyecto_prueba"=>$proyecto_prueba,
+        ];
+        return view("proyectos.pruebas_detallada", $contexto);
+    }
+    
+    public function post_prueba_detallada(Request $request,ProyectoPrueba $proyecto_prueba)
+    {
+        // Convertir $superada en booleano para mayor seguridad
+        $post=$request->validate([
+            'realizacion' => 'nullable|string',
+            'bastionado' => 'nullable|string',
+            'observación' => 'nullable|string',
+        ]);
+    
+        $proyecto_prueba->update($post);
+        $proyecto=Proyecto::where('id',$proyecto_prueba->proyecto_id)->first();
+        $prueba=Prueba::where('id',$proyecto_prueba->prueba_id)->first();
+        // Redirigir a la página anterior
+        return redirect()->route('proyecto.pruebas',['categoria'=>$prueba->categoria,'proyecto'=>$proyecto]);
+    
     }
 }
