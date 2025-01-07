@@ -41,7 +41,7 @@ class PruebaController extends Controller
             'nombre' => 'required|string|max:255',
             'referencia' => 'required|string|max:255',
             'objetivo' => 'required|string',
-            'recomendaciones' => 'string',
+            'recomendaciones' => 'nullable|string',
             'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
@@ -78,11 +78,18 @@ class PruebaController extends Controller
             'nombre' => 'required|string|max:255',
             'referencia' => 'required|string|max:255',
             'objetivo' => 'required|string',
-            'recomendaciones' => 'string',
+            'recomendaciones' => 'nullable|string',
             'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
-        $prueba->update($put);
+        $prueba->update([
+            'categoria_id' => $put['categoria_id'],
+            'nombre' => $put['nombre'],
+            'referencia' => $put['referencia'],
+            'objetivo' => $put['objetivo'],
+            'recomendaciones' => $put['recomendaciones'] ?? null,
+        ]);
+        $prueba->herramientas()->sync($put['herramientas']);
         return redirect()->route('prueba.index');
     }
     public function show(Prueba $prueba){
