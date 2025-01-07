@@ -44,7 +44,7 @@
                                 <h1 class="h1 text-success"><b>Seguridad Web</b></h1>
                                 <h3 class="h2">Proyecto de bastionado para aplicaciones web</h3>
                                 <p>
-                                    Guía de soporte basada en la checklist de <a rel="sponsored" class="text-success" href="https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Web_Application_Penetration_Checklist_v1_1.pdf" target="_blank">Owasp</a>  para conseguir que tu sitio web laravel sea seguro
+                                    Guía de soporte basada en la checklist de <a rel="sponsored" class="text-success" href="https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Web_Application_Penetration_Checklist_v1_1.pdf" target="_blank">Owasp</a>  para realizar informes de seguridad tu sitio web.
                                 </p>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
     <thead>
     <tr>
         <th> Nombre</th>
-        <th> URL</th>
+        <th> Dominio</th>
         <th> Fecha</th>
         <th> Editar</th>
         <th> Eliminar</th>

@@ -23,13 +23,13 @@
 
       <!-- Campo URL -->
       <div class="mb-3">
-        <label for="url" class="form-label">URL</label>
+        <label for="url" class="form-label">Dominio</label>
         <input 
           type="url" 
           class="form-control" 
           id="url" 
           name="url" 
-          placeholder="URL" 
+          placeholder="Dominio" 
           required>
       </div>
 
