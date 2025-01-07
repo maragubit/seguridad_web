@@ -54,6 +54,7 @@ Route::group(['prefix' => 'herramientas'], function() {
     Route::get('', [HerramientaController::class, 'index'])->name('herramienta.index');
     Route::get('/create', [HerramientaController::class, 'create'])->name('herramienta.create');
     Route::post('/create', [HerramientaController::class, 'store']);
+    Route::get('/{herramienta}', [HerramientaController::class, 'show'])->name('herramienta.show');
     Route::get('/edit/{herramienta}', [HerramientaController::class, 'edit'])->name('herramienta.edit');
     Route::put('/update/{herramienta}', [HerramientaController::class, 'update'])->name('herramienta.update');
     });

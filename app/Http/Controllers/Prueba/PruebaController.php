@@ -46,6 +46,7 @@ class PruebaController extends Controller
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
 
+
         // Crear la nueva prueba
         $prueba = Prueba::create([
             'categoria_id' => $validated['categoria_id'],
@@ -60,6 +61,8 @@ class PruebaController extends Controller
 
         return redirect()->route('prueba.index');
     }
+
+    
     public function edit(Request $request, Prueba $prueba)
     {
         $herramientas=Herramienta::all();

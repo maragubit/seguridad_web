@@ -47,6 +47,13 @@ class HerramientaController extends Controller
 
         return redirect()->route('herramienta.index');
     }
+
+    public function show(Herramienta $herramienta)
+    {
+        
+        return view("herramientas.show",['herramienta'=>$herramienta]);
+    }
+
     public function edit(Request $request, Herramienta $herramienta)
     {
         

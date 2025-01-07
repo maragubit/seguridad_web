@@ -34,12 +34,16 @@ body, ul, li, p, a, label, input, div {
   font-size: 18px !important;
   font-weight: 300 !important;
 }
+a{
+  color:green;
+  text-decoration: none;
+}
 .pruebas a{
   text-decoration: none;
   color:white;
 }
 .pruebas a:hover{
-  color:green;
+  color:green !important;
   
 }
 .pruebas a:visited{

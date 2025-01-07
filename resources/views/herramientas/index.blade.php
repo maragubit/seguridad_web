@@ -11,7 +11,7 @@
         @forelse($herramientas as $herramienta)
         <div class="col-lg-4">
             <div>
-                <h6>{{$herramienta->nombre}} <a href="{{route ('herramienta.edit', $herramienta)}}"><i class="bi bi-gear"></i></a></h6>
+                <h6><a href="{{route ('herramienta.show', $herramienta)}}">{{$herramienta->nombre}}</a> <a href="{{route ('herramienta.edit', $herramienta)}}"><i class="bi bi-gear"></i></a></h6>
                 <div class="descripcion mb-5">
                     <p>{{$herramienta->descripcion}}</p>
                 </div>

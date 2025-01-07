@@ -57,7 +57,7 @@
                             <h6>Herramientas recomendadas:</h6>
                             <ul class="list-unstyled pb-3">
                                 @forelse ($prueba->herramientas as $herramienta)
-                                <li>{{$herramienta->nombre}}</li>
+                                <li><a href="{{route ('herramienta.show', $herramienta)}}">{{$herramienta->nombre}}</a></li>
                                 @empty
                                 <li>sin herramientas</li>
                                 @endforelse
