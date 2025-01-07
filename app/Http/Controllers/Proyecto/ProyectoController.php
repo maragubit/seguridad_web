@@ -46,14 +46,20 @@ class ProyectoController extends Controller
     }
 
     public function show(Request $request, Proyecto $proyecto){
-        $categorias=Categoria::all();
         
-        $contexto=[
-            "proyecto"=>$proyecto,
-            "categorias"=>$categorias,
+        
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            $categorias=Categoria::all();
+        
+            $contexto=[
+                "proyecto"=>$proyecto,
+                "categorias"=>$categorias,
 
-        ];
-        return view("proyectos.show",$contexto);
+            ];
+            return view("proyectos.show",$contexto);
+        }
+        else {abort(403, 'Acceso prohibido');}
     }
     public function delete(Request $request, Proyecto $proyecto)
     {
@@ -63,16 +69,27 @@ class ProyectoController extends Controller
 
     public function edit(Request $request, Proyecto $proyecto)
     {
-        return view('proyectos.update',["proyecto"=>$proyecto]);
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            return view('proyectos.update',["proyecto"=>$proyecto]);
+        }
+        else {
+            abort(403, 'Acceso prohibido');
+        }
     }
     public function update(Request $request, Proyecto $proyecto)
     {
-        $post=$request->validate([
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            $post=$request->validate([
             'nombre' => 'required|string|max:255',
             'url' => 'required|url',
-        ]);
-        $proyecto->update($post);
-        return redirect()->route('proyecto.misproyectos');
+            ]);
+        
+            $proyecto->update($post);
+            return redirect()->route('proyecto.misproyectos');
+        }
+        else{abort(403, 'Acceso prohibido');}
     }
 
     public function pruebas_proyecto(Categoria $categoria,Proyecto $proyecto){
@@ -115,17 +132,22 @@ class ProyectoController extends Controller
 
     function prueba_detallada(Proyecto $proyecto, Prueba $prueba)
     {
-        $proyecto_prueba = ProyectoPrueba::firstOrCreate(
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            $proyecto_prueba = ProyectoPrueba::firstOrCreate(
             [
                 'proyecto_id' => $proyecto->id,
                 'prueba_id' => $prueba->id,
             ]);
-        $contexto=[
-            "proyecto"=>$proyecto,
-            "prueba"=>$prueba,
-            "proyecto_prueba"=>$proyecto_prueba,
-        ];
-        return view("proyectos.pruebas_detallada", $contexto);
+            $contexto=[
+                "proyecto"=>$proyecto,
+                "prueba"=>$prueba,
+                "proyecto_prueba"=>$proyecto_prueba,
+            ];
+            return view("proyectos.pruebas_detallada", $contexto);
+        }
+        else{abort(403, 'Acceso prohibido');}
+
     }
     
     public function post_prueba_detallada(Request $request,ProyectoPrueba $proyecto_prueba)

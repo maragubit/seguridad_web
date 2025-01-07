@@ -34,6 +34,18 @@ body, ul, li, p, a, label, input, div {
   font-size: 18px !important;
   font-weight: 300 !important;
 }
+.pruebas a{
+  text-decoration: none;
+  color:white;
+}
+.pruebas a:hover{
+  color:green;
+  
+}
+.pruebas a:visited{
+  color:white;
+  text-decoration: none;
+}
 .h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 48px !important;
@@ -220,7 +232,10 @@ Categorias
   max-height: 180px;
   overflow-y: scroll;
 }
-
+.negro {
+  background-color: #000;
+  color:white;
+}
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }
