@@ -8,8 +8,7 @@
 <div class="container text-center" style="width:1000px">
 <form action="" method="POST" style="width:1000px">
         <!-- Token de seguridad para Laravel -->
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+        @csrf
          <!-- Campo para nombre -->
         <div class="form-group">
         <label for="nombre">Nombre:</label>
@@ -19,7 +18,7 @@
         <!-- Campo para descripcion -->
         <div class="form-group">
         <label for="descripcion">Descripcion:</label><br>
-        <textarea class= "form-control" descripcion" id="descripcion" placeholder="descripcion" rows="4" required></textarea>
+        <textarea class= "form-control" name="descripcion" id="descripcion" placeholder="descripcion" rows="4" required></textarea>
         </div>
         <br>
         

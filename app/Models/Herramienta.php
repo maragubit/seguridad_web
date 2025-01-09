@@ -10,7 +10,7 @@ class Herramienta extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
-        'documentación',
+        'documentacion',
     ];
 
     //relación de asociación herramienta con prueba
