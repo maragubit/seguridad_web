@@ -16,17 +16,18 @@
         <input type="text" name="nombre" id="nombre" required>
         </div>
         <br>
-        <!-- Campo para referencia -->
+        <!-- Campo para descripcion -->
         <div class="form-group">
-        <label for="descripcion">Descripcion:</label>
-        <textarea name="descripcion" id="descripcion" placeholder="descripcion" rows="4" required>
+        <label for="descripcion">Descripcion:</label><br>
+        <textarea class= "form-control" descripcion" id="descripcion" placeholder="descripcion" rows="4" required></textarea>
         </div>
         <br>
         
 
         <!-- Campo para objetivo -->
         <div class="form-group">
-        <input type="text" name="documentacion" style="width:600px !important" id="documentacion" placeholder="url documentacion" required></textarea>
+        <label for="documentacion">Link a la documentación:</label>
+        <input type="text" name="documentacion" style="width:600px !important" id="documentacion" placeholder="url documentacion" required>
         </div>
         <br>
         
