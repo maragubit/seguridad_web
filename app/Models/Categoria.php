@@ -18,6 +18,6 @@ class Categoria extends Model
     }
     public function pruebas():HasMany
     {
-        return $this->hasMany(Prueba::class);
+        return $this->hasMany(Prueba::class)->orderBy('referencia', 'asc');
     }
 }
