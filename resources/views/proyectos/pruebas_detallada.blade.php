@@ -1,7 +1,5 @@
 @extends('base')
 
-@section('title', 'Seguridad web')
-
 @section('content')
 <br>
 <div class="container  text-center mt-2">

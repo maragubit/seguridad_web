@@ -13,4 +13,8 @@ class CoreController extends Controller
             "categorias"=>$categorias,
         ]);
     }
+
+    public function aboutUs(){
+        return view ('index');
+    }
 }

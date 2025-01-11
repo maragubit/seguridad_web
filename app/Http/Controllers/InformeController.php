@@ -26,6 +26,6 @@ class InformeController extends Controller
 
         // Descargar el PDF
         /* return view ('informe',$contexto); */
-        return $pdf->download('informe_seguridad_web.pdf');
+        return $pdf->download('informe_webguardian.pdf');
     }
 }

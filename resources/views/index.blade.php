@@ -1,11 +1,6 @@
  <!-- resources/views/home.blade.php -->
 @extends('base')
-
-@section('title', 'Seguridad web')
-
 @section('content')
-
-
 
  <!--Modal -->
  <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -37,14 +32,14 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./img/banner_img_01.jpg" alt="">
+                            <img class="img-fluid" src="./img/bigicon.png" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>Seguridad Web</b></h1>
+                                <h1 class="h1 text-success"><b>Web Guardian</b></h1>
                                 <h3 class="h2">Proyecto de bastionado para aplicaciones web</h3>
                                 <p>
-                                    Guía de soporte basada en la checklist de <a rel="sponsored" class="text-success" href="https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Web_Application_Penetration_Checklist_v1_1.pdf" target="_blank">Owasp</a>  para realizar informes de seguridad tu sitio web.
+                                    Guía de soporte basada en la checklist de <a rel="sponsored" class="text-success" href="https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Web_Application_Penetration_Checklist_v1_1.pdf" target="_blank">Owasp</a>  para realizar informes de seguridad sobre tu sitio web.
                                 </p>
                             </div>
                         </div>

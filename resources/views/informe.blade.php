@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Informe seguridad web</title>
+    <title>Informe Web Guardian</title>
     <style>
         body { font-family: Arial, sans-serif; }
         table { width: 100%; border-collapse: collapse; }
@@ -28,7 +28,7 @@
     <div class="marca-agua">
         <img src="{{ public_path('img/apple-icon.png') }}" alt="Marca de agua">
     </div>
-    <h2 style="text-align:center">Informe de seguridad web {{$proyecto->nombre}}</h2>
+    <h2 style="text-align:center">Informe de Web Guardian sobre {{$proyecto->nombre}}</h2>
     <p>El usuario {{ Auth::user()->name }} ha llevado a cabo una serie de pruebas bajo su supervisión directa para el dominio {{$proyecto->url}}, asegurándose de que cada procedimiento se ejecutó conforme a los estándares
        previamente establecidos. Como máximo responsable, el usuario {{ Auth::user()->name }} garantiza la validez de los datos recopilados y asume plena responsabilidad sobre los resultados
        presentados en este informe.

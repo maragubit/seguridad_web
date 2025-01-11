@@ -1,7 +1,6 @@
  <!-- resources/views/home.blade.php -->
  @extends('base')
 
-@section('title', 'Seguridad web')
 
 @section('content')
 @vite(['resources/css/app.css', 'resources/js/app.js'])
