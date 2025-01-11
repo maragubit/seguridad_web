@@ -9,7 +9,7 @@
         @forelse($herramientas as $herramienta)
         <div class="col-lg-4">
             <div>
-                <h6><a href="{{route ('herramienta.show', $herramienta)}}">{{$herramienta->nombre}}</a> <a href="{{route ('herramienta.edit', $herramienta)}}"><i class="bi bi-gear"></i></a></h6>
+                <h6 style="background-color: black; border-radius: 3px; padding:2px;"> <a style="font-weight: 600 !important;"href="{{route ('herramienta.show', $herramienta)}}">{{$herramienta->nombre}}</a> <a href="{{route ('herramienta.edit', $herramienta)}}"><i class="bi bi-gear"></i></a></h6>
                 <div class="descripcion mb-5">
                     <p>{{$herramienta->descripcion}}</p>
                 </div>
@@ -25,5 +25,9 @@
 </div>
 
 <br>
-
+<style>
+    a:hover{
+        color:#1abd1a;
+    }
+</style>
 @endsection

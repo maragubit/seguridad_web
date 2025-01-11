@@ -239,6 +239,8 @@ Categorias
 .negro {
   background-color: #000;
   color:white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}

@@ -13,7 +13,7 @@ class HerramientaController extends Controller
 {
     function index()
     {
-        $object = Herramienta::all();
+        $object = Herramienta::orderBy('nombre')->get();
 
         $contexto=[
             "herramientas"=>$object,

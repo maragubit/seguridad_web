@@ -158,6 +158,7 @@ class ProyectoController extends Controller
             'bastionado' => 'nullable|string',
             'observación' => 'nullable|string',
         ]);
+        
     
         $proyecto_prueba->update($post);
         $proyecto=Proyecto::where('id',$proyecto_prueba->proyecto_id)->first();

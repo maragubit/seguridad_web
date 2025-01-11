@@ -57,11 +57,11 @@
 <form method="POST" action="{{route ('proyecto.post_prueba_detallada', $proyecto_prueba)}}">
     @csrf
     <!-- Campo de realizacion -->
-    <label for="realizacion" class="mb-1">¿Cómo vas a realizar la prueba?:</label>
+    <label for="realizacion" class="mb-1">¿Cómo ha realizado la prueba?:</label>
     <textarea id="realizacion" name="realizacion">@if ($proyecto_prueba->realizacion){{$proyecto_prueba->realizacion}}@endif</textarea>
 
     <!-- Campo de bastionado -->
-    <label for="bastionado" class="mb-1 mt-5">¿Qué medidas de seguridad has tomado para corregirla?</label>
+    <label for="bastionado" class="mb-1 mt-5">¿Qué medidas de seguridad has implementado para {{$prueba->nombre}}?</label>
     <textarea id="bastionado" name="bastionado">@if ($proyecto_prueba->bastionado){{$proyecto_prueba->bastionado}}@endif</textarea>
 
     <!-- Campo de observaciones -->
@@ -75,15 +75,23 @@
 <script>
     // Inicializar CKEditor en los campos de texto
     ClassicEditor
-        .create(document.querySelector('#realizacion'))
+        .create(document.querySelector('#realizacion'), {
+
+        toolbar: ['bold', 'italic', 'link', 'undo', 'redo'] // Añadir la opción de cargar imágenes
+    })
         .catch(error => {
             console.error(error);
         });
 
-    ClassicEditor
-        .create(document.querySelector('#bastionado'))
+        ClassicEditor
+        .create(document.querySelector('#bastionado'), {
+        
+        toolbar: ['bold', 'italic', 'link', 'undo', 'redo'] // Añadir la opción de cargar imágenes
+    })
         .catch(error => {
             console.error(error);
         });
+
+    
 </script>
 @endsection
