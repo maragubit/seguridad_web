@@ -95,6 +95,18 @@
             >{{ old('recomendaciones', $prueba->recomendaciones) }}</textarea>
         </div>
         <br>
+        <!-- Campo para bastionado -->
+        <div class="form-group">
+            <textarea 
+                name="bastionado" 
+                id="bastionado" 
+                style="width:600px !important" 
+                placeholder="Recomendaciones para defenderte del ataque" 
+                rows="4" 
+                
+            >{{ old('recomendaciones', $prueba->recomendaciones) }}</textarea>
+        </div>
+        <br>
         <!-- Botón de envío -->
         <button class="btn btn-success" type="submit">Actualizar</button>
     </form>

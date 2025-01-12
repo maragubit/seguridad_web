@@ -14,6 +14,7 @@ class Prueba extends Model
         'categoria_id',
         'objetivo',
         'recomendaciones',
+        'bastionado',
     ];
 
     public function categoria():BelongsTo

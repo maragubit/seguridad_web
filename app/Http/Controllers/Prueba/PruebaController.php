@@ -42,6 +42,7 @@ class PruebaController extends Controller
             'referencia' => 'required|string|max:255',
             'objetivo' => 'required|string',
             'recomendaciones' => 'nullable|string',
+            'bastionado' => 'nullable|string',
             'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
@@ -54,6 +55,7 @@ class PruebaController extends Controller
             'referencia' => $validated['referencia'],
             'objetivo' => $validated['objetivo'],
             'recomendaciones' => $validated['recomendaciones'],
+            'bastionado' => $validated['bastionado'],
         ]);
 
         // Asignar las herramientas a la prueba
@@ -82,6 +84,7 @@ class PruebaController extends Controller
             'referencia' => 'required|string|max:255',
             'objetivo' => 'required|string',
             'recomendaciones' => 'nullable|string',
+            'bastionado' => 'nullable|string',
             'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
@@ -91,6 +94,7 @@ class PruebaController extends Controller
             'referencia' => $put['referencia'],
             'objetivo' => $put['objetivo'],
             'recomendaciones' => $put['recomendaciones'] ?? null,
+            'bastionado' => $put['bastionado'] ?? null,
         ]);
         $prueba->herramientas()->sync($put['herramientas']);
         return redirect()->route('prueba.index');

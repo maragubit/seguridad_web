@@ -27,7 +27,7 @@
                                 <table class="table table-striped table-dark">
                                      @forelse($herramienta->pruebas as $prueba)
                                      <tr>
-                                        <th><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></th>
+                                        <th><a style="font-weight:600 !important;" href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></th>
                                         <th>{{$prueba->referencia}}</th>
                                     </tr>
                                     @empty @endforelse

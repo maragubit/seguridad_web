@@ -23,6 +23,7 @@
                     <div class="card mb-3">
                         <img class="card-img img-fluid"  src="/img/categorias/{{$prueba->categoria->url}}" alt="Card image cap" id="product-detail">
                     </div>
+                    
                 </div>
                 <!-- col end -->
                 <div class="col-lg-7 mt-5">
@@ -47,10 +48,7 @@
                             </ul>
 
                             <h6>Descripcion:</h6>
-                            <p>{{$prueba->objetivo}}</p>
-
-                            <h6>Recomendaciones para realizar la prueba:</h6>
-                            <p class="recomendaciones">{{$prueba->recomendaciones}}</p>
+                            <p class="descripcion">{{$prueba->objetivo}}</p>
 
                             <h6>Herramientas recomendadas:</h6>
                             <ul class="list-unstyled pb-3">
@@ -68,11 +66,28 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6><img height="30" src="/img/apple-iconred.png">Recomendaciones para realizar la prueba:</h6>
+                            <p class="descripcion izq">{{$prueba->recomendaciones}}</p>
+
+                            <div><h6><img height="30" src="/img/apple-iconblue.png">Recomendaciones para defenderse del ataque:</h6></div>
+                            <p class="descripcion izq">{{$prueba->bastionado}}</p>
+                        </div>
+                    </div>    
+                </div>
+            </div>
         </div>
     </section>
     <!-- Close Content -->
 </div>
 
 <br>
-
+<style>
+    .izq{
+        text-align: left;
+    }
+</style>
 @endsection

@@ -56,6 +56,10 @@
         <textarea name="recomendaciones" style="width:600px !important" id="recomendaciones" placeholder="recomendaciones para realizar la prueba" rows="4"></textarea>
         </div>
         <br>
+        <!-- Campo para bastionado -->
+        <div class="form-group">
+        <textarea name="bastionado" style="width:600px !important" id="bastionado" placeholder="recomendaciones para defenderte del ataque" rows="4"></textarea>
+        </div>
         <!-- Botón de envío -->
         <button class="btn btn-success" type="submit">Guardar</button>
     </form>
