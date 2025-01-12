@@ -20,7 +20,7 @@
                         <tr>
                         <td><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></td>
                         <td>{{$prueba->referencia}}</td>
-                        <td> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-pencil-square"></i></a></td>
+                        @if (auth()->user()->role_id == 1)<td> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-pencil-square"></i></a></td>@endif
                         </tr>
                         @empty
                         <p>sin pruebas....</p>
@@ -34,7 +34,7 @@
     </div>
           
 <br>
-<a href="{{route('prueba.create')}}"><button class="btn btn-success">Crear</button></a>
+@if (auth()->user()->role_id == 1)<a href="{{route('prueba.create')}}"><button class="btn btn-success">Crear</button></a>@endif
 </div>
 
 <br>
