@@ -16,6 +16,9 @@ Route::get('/welcome', function () {
 
 Route::get('/',[CoreController::class,'index'])->name('index');
 
+Route::get('/cookies-policy', function () {
+    return view('cookies-policy');
+})->name('cookies-policy');
 ############################################################
 ##                       Proyectos                          ##
 ############################################################

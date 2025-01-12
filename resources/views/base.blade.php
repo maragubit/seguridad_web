@@ -118,7 +118,7 @@
     <main>
         @yield('content')
     </main>
-
+    @include('cookie-banner')
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -193,5 +193,22 @@
 
    
 </body>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar si ya se ha aceptado la política de cookies
+            if (!localStorage.getItem('cookies_accepted')) {
+                // Mostrar el banner
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
 
+            // Cuando el usuario hace clic en "Aceptar"
+            document.getElementById('accept-cookies').addEventListener('click', function() {
+                // Guardar que el usuario aceptó las cookies
+                localStorage.setItem('cookies_accepted', 'true');
+
+                // Ocultar el banner
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
+        });
+    </script>
 </html>
