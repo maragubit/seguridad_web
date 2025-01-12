@@ -104,7 +104,7 @@
                 placeholder="Recomendaciones para defenderte del ataque" 
                 rows="4" 
                 
-            >{{ old('recomendaciones', $prueba->recomendaciones) }}</textarea>
+            >{{ old('bastionado', $prueba->bastionado) }}</textarea>
         </div>
         <br>
         <!-- Botón de envío -->
