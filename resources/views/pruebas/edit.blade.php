@@ -38,7 +38,7 @@
         <!-- Campo para categoría -->
         <div class="form-group">
             <label for="categoria_id">Categoría:</label>
-            <select name="categoria_id" id="categoria_id" required>
+            <select name="categoria_id" id="categoria_id">
                 <option value="">Seleccione una categoría</option>
                 @foreach($categorias as $categoria)
                     <option 
@@ -55,7 +55,7 @@
         <!-- Campo para herramientas -->
         <div class="form-group">
             <label for="herramientas">Herramientas:</label><br>
-            <select name="herramientas[]" id="herramientas" multiple required>
+            <select name="herramientas[]" id="herramientas" multiple>
                 @forelse($herramientas as $herramienta)
                     <option 
                         value="{{ $herramienta->id }}" 

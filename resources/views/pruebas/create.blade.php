@@ -35,7 +35,7 @@
         <!-- Campo para herramientas -->
         <div class="form-group">
         <label for="herramientas">Herramientas:</label><br>
-        <select name="herramientas[]" id="herramientas" multiple required>
+        <select name="herramientas[]" id="herramientas" multiple>
             <!-- Opciones de herramientas aquí -->
                 @forelse ($herramientas as $herramienta)
             <option value="{{$herramienta->id}}">{{$herramienta->nombre}}</option>

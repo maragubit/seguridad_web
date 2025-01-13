@@ -43,7 +43,7 @@ class PruebaController extends Controller
             'objetivo' => 'required|string',
             'recomendaciones' => 'nullable|string',
             'bastionado' => 'nullable|string',
-            'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
+            'herramientas' => 'nullable|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
 
@@ -59,7 +59,11 @@ class PruebaController extends Controller
         ]);
 
         // Asignar las herramientas a la prueba
-        $prueba->herramientas()->sync($validated['herramientas']);
+        
+        if (isset($validated['herramientas']) && is_array($validated['herramientas']) && count($validated['herramientas']) > 0) {
+            // Asignar las herramientas a la prueba
+            $prueba->herramientas()->sync($validated['herramientas']);
+        }
 
         return redirect()->route('prueba.index');
     }
@@ -85,7 +89,7 @@ class PruebaController extends Controller
             'objetivo' => 'required|string',
             'recomendaciones' => 'nullable|string',
             'bastionado' => 'nullable|string',
-            'herramientas' => 'required|array', // Asegurar que sea una lista de herramientas
+            'herramientas' => 'nullable|array', // Asegurar que sea una lista de herramientas
             'herramientas.*' => 'exists:herramientas,id', // Validar cada herramienta
         ]);
         $prueba->update([
@@ -96,7 +100,10 @@ class PruebaController extends Controller
             'recomendaciones' => $put['recomendaciones'] ?? null,
             'bastionado' => $put['bastionado'] ?? null,
         ]);
-        $prueba->herramientas()->sync($put['herramientas']);
+        if (isset($put['herramientas']) && is_array($put['herramientas']) && count($put['herramientas']) > 0) {
+            // Sincronizar las herramientas si están presentes y no vacías
+            $prueba->herramientas()->sync($put['herramientas']);
+        }
         return redirect()->route('prueba.index');
     }
     public function show(Prueba $prueba){
