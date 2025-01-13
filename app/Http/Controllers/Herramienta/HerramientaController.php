@@ -32,7 +32,7 @@ class HerramientaController extends Controller
         $validated = $request->validate([
             
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:255',
+            'descripcion' => 'required|string|max:555',
             'documentacion' => 'required|string',
             
         ]);
