@@ -67,6 +67,7 @@
 
             <a class="navbar-brand text-success logo h1 align-self-center" href="{{route('index')}}">
                 <img class="logo" src="/img/apple-icon.png"></img>
+                
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

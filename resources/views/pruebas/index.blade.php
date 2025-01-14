@@ -15,17 +15,20 @@
                     <img src="/img/categorias/{{$categoria->url}}" style="height:250px !important; width:280px !important;" class="card-img img-fluid" 
                     alt="{{ $categoria->nombre }}"></img>
                 </div>
-                <table class="table table-striped table-dark pruebas mt-2">    
-                @forelse($categoria->pruebas as $prueba)
-                        <tr>
-                        <td><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></td>
-                        <td>{{$prueba->referencia}}</td>
-                        @if (auth()->check() && auth()->user()->role_id == 1)<td> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-pencil-square"></i></a></td>@endif
-                        </tr>
-                        @empty
-                        <p>sin pruebas....</p>
-                    @endforelse
-                </table>
+                <div class="tabla-pruebas" id="tabla-pruebas{{$categoria->id}}">
+                    <table class="table table-striped table-dark pruebas mt-2">    
+                    @forelse($categoria->pruebas as $prueba)
+                            <tr>
+                            <td><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></td>
+                            <td>{{$prueba->referencia}}</td>
+                            @if (auth()->check() && auth()->user()->role_id == 1)<td> <a href="{{route ('prueba.edit', $prueba)}}"><i class="bi bi-pencil-square"></i></a></td>@endif
+                            </tr>
+                            @empty
+                            <p>sin pruebas....</p>
+                        @endforelse
+                    </table>
+                </div>
+                <div id="ojo{{$categoria->id}}" class="ojo">@if ($categoria->pruebas->count() > 3) <span id ="mas{{$categoria->id}}" onclick="abrir({{$categoria->id}})" class="mas">mostrar más...</span> @endif</div>
             </div>        
         </div>
  @empty
@@ -38,5 +41,31 @@
 </div>
 
 <br>
+<style>
+    .tabla-pruebas{
+        height: 150px;
+        overflow: hidden;
+        background-color: #212529;
+    }
+    .ojo {
+        height: 30px;
+    }
+    .mas{
+        cursor: pointer;
+    }
+    
+    .expand{
+        height: 100%;
+        overflow: visible;
+    }
+</style>
 
+<script>
+   function abrir(id) {
+    let mas = document.getElementById('mas'+id);
+    mas.innerHTML = mas.innerHTML==="mostrar más..." ? "mostrar menos ..." : "mostrar más...";
+    let tabla=document.getElementById('tabla-pruebas'+id);
+    tabla.classList.toggle('expand');
+   }
+</script>
 @endsection
