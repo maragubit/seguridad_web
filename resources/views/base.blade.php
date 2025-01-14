@@ -44,9 +44,7 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:maragubit@gmail.com">maragubit@gmail.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:+34630457830">630457830</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:es.webguardian@gmail.com">es.webguardian@gmail.com</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -133,12 +131,12 @@
                             The bridge | proyecto final
                         </li>
                         <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:+34630457830">630457830</a>
+                            <i class="fa fa-users fa-fw"></i>
+                            Martín Agüera | Irene Garrido
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:maragubit@gmail.com">maragubit@gmail.com</a>
+                            <a class="text-decoration-none" href="mailto:es.webguardian@gmail.com">es.webguardian@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -148,6 +146,7 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="#">Home</a></li>
                         <li><a class="text-decoration-none" href="#">About Us</a></li>
+                        <li><a class="text-decoration-none" href="{{route ('cookies-policy')}}">Política de cookies</a></li>
                     </ul>
                 </div>
 
