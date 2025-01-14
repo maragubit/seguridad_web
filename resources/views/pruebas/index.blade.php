@@ -12,7 +12,7 @@
             <div class="pruebasList">
                 <h6 class="negro">{{$categoria->nombre}} </h6>
                 <div style="background-color:black">
-                    <img src="/img/categorias/{{$categoria->url}}" style="height:300px !important; width:300px !important;" class="card-img img-fluid" 
+                    <img src="/img/categorias/{{$categoria->url}}" style="height:250px !important; width:250px !important;" class="card-img img-fluid" 
                     alt="{{ $categoria->nombre }}"></img>
                 </div>
                 <table class="table table-striped table-dark pruebas mt-2">    
