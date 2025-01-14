@@ -11,7 +11,7 @@
         <div class="col-lg-4 mb-3">
             <div class="pruebasList">
                 <h6 class="negro">{{$categoria->nombre}} </h6>
-                <div style="background-color:black">
+                <div style="background-color:#212529">
                     <img src="/img/categorias/{{$categoria->url}}" style="height:250px !important; width:250px !important;" class="card-img img-fluid" 
                     alt="{{ $categoria->nombre }}"></img>
                 </div>
