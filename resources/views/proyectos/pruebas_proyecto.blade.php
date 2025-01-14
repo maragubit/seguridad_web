@@ -6,7 +6,7 @@
 <div class="container  text-center mt-2">
     <h3><u>Pruebas de {{$categoria->nombre}}</u></h3>
     <br>
-<h4>{{$proyecto->nombre}} <strong>({{$total_superadas}}/{{$total}})</strong></h4>
+<h4><a style="font-size:larger !important; font-weight:500 !important;" href="{{route ('proyecto.show',$proyecto)}}">{{$proyecto->nombre}}</a> <strong>({{$total_superadas}}/{{$total}})</strong></h4>
 
 @forelse ($categoria->pruebas as $prueba)
 

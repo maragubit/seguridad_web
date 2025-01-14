@@ -63,7 +63,7 @@
     </tbody>
 </table>
 <hr>
-<h3>Pruebas no superadas</h3>
+<h3>Pruebas pendientes de superar</h3>
        
        <table>
     <thead>
@@ -106,7 +106,30 @@ $proyecto_prueba=$proyecto_prueba->where('proyecto_id',$proyecto->id)->where('pr
 <br>
 <h4>Observaciones de la prueba:</h4>
 <p>{!! $proyecto_prueba->observación !!}</p>
- <hr>   
+<hr>
+@empty
+@endforelse
+<hr>
+<br>
+<br>
+<!-- Comienza en el informe las no superadas pero realizadas -->
+<h2 style="text-align:center">Informe detallado de pruebas no superadas</h2>
+<br>
+@forelse ($pruebasNoSuperadasRealizadas as $prueba)
+<h3>{{$prueba->nombre}} ({{$prueba->referencia}}) [{{$prueba->updated_at}}]</h3>
+<p>{{$prueba->objetivo}}
+<h4>Procedimiento:</h4>
+@php
+$proyecto_prueba=$proyecto_prueba->where('proyecto_id',$proyecto->id)->where('prueba_id',$prueba->id)->first()
+@endphp
+<p>{!! $proyecto_prueba->realizacion !!}</p>
+<br>
+<h4>Proceso de bastionado:</h4>
+<p>{!! $proyecto_prueba->bastionado !!}</p>
+<br>
+<h4>Observaciones de la prueba:</h4>
+<p>{!! $proyecto_prueba->observación !!}</p>
+ <hr>      
 @empty
 @endforelse
 </body>

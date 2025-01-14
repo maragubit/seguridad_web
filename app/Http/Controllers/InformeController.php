@@ -14,12 +14,14 @@ class InformeController extends Controller
         
         $pruebasSuperadas = $proyecto->pruebas()->wherePivot('superada', 1)->get();
         $pruebasNoSuperadas = Prueba::whereNotIn('id', $pruebasSuperadas->pluck('id'))->get();
+        $pruebasNoSuperadasRealizadas=$proyecto->pruebas()->wherePivot('superada', 0)->wherePivotNotNull('realizacion')->get();
         $proyecto_prueba=ProyectoPrueba::all();
         // Renderizar la vista con los datos
         $contexto=[
             'proyecto' => $proyecto,
             'pruebasSuperadas'=>$pruebasSuperadas,
             'pruebasNoSuperadas'=>$pruebasNoSuperadas,
+            'pruebasNoSuperadasRealizadas'=>$pruebasNoSuperadasRealizadas,
             'proyecto_prueba'=>$proyecto_prueba,
         ];
         $pdf = Pdf::loadView('informe', $contexto);
