@@ -11,11 +11,11 @@
         <div class="col-lg-4 mb-3">
             <div class="pruebasList">
                 <h6 class="negro">{{$categoria->nombre}} </h6>
-                <hr>
-                <img src="/img/categorias/{{$categoria->url}}" style="max-height:200px !important" class="card-img img-fluid" 
-                alt="{{ $categoria->nombre }}"></img>
-                <hr>
-                <table class="table table-striped table-dark pruebas">    
+                <div style="background-color:black">
+                    <img src="/img/categorias/{{$categoria->url}}" style="height:300px !important; width:300px !important;" class="card-img img-fluid" 
+                    alt="{{ $categoria->nombre }}"></img>
+                </div>
+                <table class="table table-striped table-dark pruebas mt-2">    
                 @forelse($categoria->pruebas as $prueba)
                         <tr>
                         <td><a href="{{route ('prueba.show', $prueba)}}">{{$prueba->nombre}}</a></td>
