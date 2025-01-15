@@ -4,7 +4,12 @@
 @section('content')
 <br>
 <div class="container text-center">
-    
+<div style="text-align:end;" class="mb-3 mr-2">
+    <form action="{{ route('herramienta.index') }}" method="GET" class="d-inline">
+    <input type="text" id="search-input" placeholder="Buscar..." name="search"/>
+    <button class="btn btn-success"><i class="bi bi-search"></i></button>
+    </form>
+</div>
     <div class="row justify-content-md-center">
         @forelse($herramientas as $herramienta)
         <div class="col-lg-4">

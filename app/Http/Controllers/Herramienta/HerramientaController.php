@@ -11,15 +11,36 @@ use Illuminate\Support\Facades\Auth;
 
 class HerramientaController extends Controller
 {
-    function index()
+    public function index(Request $request)
     {
-        $object = Herramienta::orderBy('nombre')->get();
+        $search = $request->get('search', '');
 
-        $contexto=[
-            "herramientas"=>$object,
-        ];
-        return view("herramientas.index",$contexto);
-    } 
+        $herramientas = Herramienta::query()->orderBy('nombre')
+            ->when($search, function ($query, $search) {
+                return $query->where('nombre', 'like', '%' . $search . '%');
+                             
+            })
+            ->get();
+
+        return view('herramientas.index', compact('herramientas'));
+    }
+    
+    function filtro(Request $request){
+        $search = $request->query('search', '');
+        $perPage = $request->query('per_page', 5);
+
+        $query = Herramienta::query();
+
+        if (!empty($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $data = $query->paginate($perPage);
+
+        return response()->json($data);
+    }
+
+
     function create()
     {
         
