@@ -25,10 +25,6 @@ class PruebaController extends Controller
     {
         
         $object = Categoria::all();
-        foreach ($object as $categoria){
-            $categoria->orden=$categoria->id;
-            $categoria->save();
-        }
         $herramientas = Herramienta::all();
 
         $contexto=[
