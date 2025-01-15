@@ -14,7 +14,7 @@ class PruebaController extends Controller
     function index()
     {
         $object = Prueba::all();
-        $categorias= Categoria::all();
+        $categorias= Categoria::orderBy('orden')->orderBy('nombre')->get();
         $contexto=[
             "pruebas"=>$object,
             "categorias"=>$categorias,
@@ -24,7 +24,7 @@ class PruebaController extends Controller
     function create()
     {
         
-        $object = Categoria::all();
+        $object = Categoria::orderBy('orden')->orderBy('nombre')->get();
         $herramientas = Herramienta::all();
 
         $contexto=[

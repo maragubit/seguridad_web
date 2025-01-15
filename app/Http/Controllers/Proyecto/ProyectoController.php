@@ -50,7 +50,7 @@ class ProyectoController extends Controller
         
         $user=Auth::user();
         if ($proyecto->user->id==$user->id){
-            $categorias=Categoria::all();
+            $categorias=Categoria::orderBy('orden')->orderBy('nombre')->get();
         
             $contexto=[
                 "proyecto"=>$proyecto,
