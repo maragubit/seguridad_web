@@ -15,30 +15,16 @@ class HerramientaController extends Controller
     {
         $search = $request->get('search', '');
 
-        $herramientas = Herramienta::query()->orderBy('nombre')
-            ->when($search, function ($query, $search) {
-                return $query->where('nombre', 'like', '%' . $search . '%');
-                             
-            })
-            ->get();
+        $herramientas = Herramienta::query()
+        ->orderBy('nombre')
+        ->when($search, function ($query, $search) {
+            return $query->where('nombre', 'like', '%' . $search . '%');
+        })
+        ->paginate(9);  // Paginamos los resultados de 5 en 5
 
         return view('herramientas.index', compact('herramientas'));
     }
     
-    function filtro(Request $request){
-        $search = $request->query('search', '');
-        $perPage = $request->query('per_page', 5);
-
-        $query = Herramienta::query();
-
-        if (!empty($search)) {
-            $query->where('name', 'like', '%' . $search . '%');
-        }
-
-        $data = $query->paginate($perPage);
-
-        return response()->json($data);
-    }
 
 
     function create()
