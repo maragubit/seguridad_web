@@ -83,7 +83,7 @@
                         </li>
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('proyecto.misproyectos') }}">Mis proyecto</a>
+                            <a class="nav-link" href="{{ route('proyecto.misproyectos') }}">Mis proyectos</a>
                         </li>
                         
                         @endauth
