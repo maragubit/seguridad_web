@@ -47,10 +47,10 @@
                     <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:es.webguardian@gmail.com">es.webguardian@gmail.com</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                    <a class="text-light" href="#"  rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#" ><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#" ><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="#" ><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
                 </div>
                 <div>
                     @auth<a class="text-light" href="{{route('profile.edit')}}"><i class="bi bi-person-circle"></i> {{ Auth::user()->name }}</a>@endauth
