@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-    <div class="content m-5" style="width:80%;">
+    <div class="container" style="width:80%;">
     <header class="mb-5">
         <h1>Política de Cookies de WebGuardian</h1>
         <p><strong>Fecha de última actualización: 12/01/2025</strong></p>
