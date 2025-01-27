@@ -113,7 +113,8 @@ $proyecto_prueba=$proyecto_prueba->where('proyecto_id',$proyecto->id)->where('pr
 <br>
 <br>
 <!-- Comienza en el informe las no superadas pero realizadas -->
-<h2 style="text-align:center">Informe detallado de pruebas no superadas</h2>
+ @if($pruebasNoSuperadasRealizadas->count() > 0)
+<h2 style="text-align:center">Informe detallado de pruebas realizadas no superadas</h2>
 <br>
 @forelse ($pruebasNoSuperadasRealizadas as $prueba)
 <h3>{{$prueba->nombre}} ({{$prueba->referencia}}) [{{$prueba->updated_at}}]</h3>
@@ -132,5 +133,6 @@ $proyecto_prueba=$proyecto_prueba->where('proyecto_id',$proyecto->id)->where('pr
  <hr>      
 @empty
 @endforelse
+@endif
 </body>
 </html>
