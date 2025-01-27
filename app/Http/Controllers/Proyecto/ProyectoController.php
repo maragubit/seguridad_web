@@ -93,40 +93,52 @@ class ProyectoController extends Controller
     }
 
     public function pruebas_proyecto(Categoria $categoria,Proyecto $proyecto){
-        
-        $total = $categoria->pruebas->count();
-        $total_superadas=0;
-        $pruebas = $proyecto->pruebas->where('categoria_id', $categoria->id);
-        // Iterar sobre cada prueba
-        foreach ($pruebas as $prueba) {
-            // Verificar si la prueba está asociada al proyecto y si 'superada' es true en el pivote
-            if ($prueba->pivot->superada==true) {
-                $total_superadas+=1;
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            $total = $categoria->pruebas->count();
+            $total_superadas=0;
+            $pruebas = $proyecto->pruebas->where('categoria_id', $categoria->id);
+            // Iterar sobre cada prueba
+            foreach ($pruebas as $prueba) {
+                // Verificar si la prueba está asociada al proyecto y si 'superada' es true en el pivote
+                if ($prueba->pivot->superada==true) {
+                    $total_superadas+=1;
+                }
             }
+            $contexto=[
+                "categoria"=>$categoria,
+                "proyecto"=>$proyecto,
+                "total"=>$total,
+                "total_superadas"=>$total_superadas,
+            ];
+            return view ("proyectos.pruebas_proyecto",$contexto);
         }
-        $contexto=[
-            "categoria"=>$categoria,
-            "proyecto"=>$proyecto,
-            "total"=>$total,
-            "total_superadas"=>$total_superadas,
-        ];
-        return view ("proyectos.pruebas_proyecto",$contexto);
+        else 
+        {
+            abort(403, 'Acceso prohibido');
+        }
     }
     
     
     public function prueba_superada(Proyecto $proyecto, Prueba $prueba, $superada)
     {
-        // Convertir $superada en booleano para mayor seguridad
-        $superada = filter_var($superada, FILTER_VALIDATE_BOOLEAN);
-        echo $superada;
-        // Sincronizar el estado de la prueba con el proyecto
-        $proyecto->pruebas()->syncWithoutDetaching([
-            $prueba->id => ['superada' => $superada,
-            'observación' => '',],
-        ]);
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            // Convertir $superada en booleano para mayor seguridad
+            $superada = filter_var($superada, FILTER_VALIDATE_BOOLEAN);
+            echo $superada;
+            // Sincronizar el estado de la prueba con el proyecto
+            $proyecto->pruebas()->syncWithoutDetaching([
+                $prueba->id => ['superada' => $superada,
+                'observación' => '',],
+            ]);
 
-        // Redirigir a la página anterior
-        return redirect()->back()->with('success', 'Estado de la prueba actualizado');
+            // Redirigir a la página anterior
+            return redirect()->back()->with('success', 'Estado de la prueba actualizado');
+        }
+        else {
+            abort(403, 'Acceso prohibido');
+        }
     }
 
 
