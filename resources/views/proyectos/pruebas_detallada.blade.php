@@ -58,16 +58,15 @@
     @csrf
     <!-- Campo de realizacion -->
     <label for="realizacion" class="mb-1">¿Cómo ha realizado la prueba?:</label>
-    <textarea id="realizacion" name="realizacion">@if ($proyecto_prueba->realizacion){{$proyecto_prueba->realizacion}}@endif</textarea>
-
-    <!-- Campo de bastionado -->
+    <textarea id="realizacion" name="realizacion" maxlength="3000">@if ($proyecto_prueba->realizacion){{$proyecto_prueba->realizacion}}@endif</textarea>
+    <p id="contador" style="color: red;">0 / 3000 caracteres</p>    <!-- Campo de bastionado -->
     <label for="bastionado" class="mb-1 mt-5">¿Qué medidas de seguridad has implementado para {{$prueba->nombre}}?</label>
-    <textarea id="bastionado" name="bastionado">@if ($proyecto_prueba->bastionado){{$proyecto_prueba->bastionado}}@endif</textarea>
-
+    <textarea id="bastionado" name="bastionado" maxlength="3000">@if ($proyecto_prueba->bastionado){{$proyecto_prueba->bastionado}}@endif</textarea>
+    <p id="contador1" style="color: red;">0 / 3000 caracteres</p>    <!-- Campo de bastionado -->
     <!-- Campo de observaciones -->
     <label for="observacion" class="mb-3 mt-5">Observaciones:</label><br>
-    <textarea id="observacion" class="form-control" name="observación">@if ($proyecto_prueba->observación){{$proyecto_prueba->observación}}@endif</textarea>
-
+    <textarea id="observacion" class="form-control" name="observación" maxlength="3000">@if ($proyecto_prueba->observación){{$proyecto_prueba->observación}}@endif</textarea>
+    <p id="aviso" style="color: red; display: none;">Has alcanzado el límite de caracteres.</p>
     <button type="submit" class="btn btn-success btn-lg mt-3">Guardar cambios en el informe</button>
 </form>
 </div>
@@ -76,22 +75,66 @@
     // Inicializar CKEditor en los campos de texto
     ClassicEditor
         .create(document.querySelector('#realizacion'), {
+            toolbar: ['bold', 'italic', 'link', 'undo', 'redo']
+        })
+        .then(editor => {
+            const maxLength = 4000;
+            const contador = document.getElementById("contador");
 
-        toolbar: ['bold', 'italic', 'link', 'undo', 'redo'] // Añadir la opción de cargar imágenes
-    })
+            editor.model.document.on('change:data', () => {
+                let contenido = editor.getData(); // Quita etiquetas HTML
+                contador.textContent = contenido.length + " / " + maxLength + " caracteres";
+
+                if (contenido.length >= maxLength) {
+                    contador.style.color = "red"; // Pone el contador en rojo
+                } else {
+                    contador.style.color = "black"; // Color normal si está dentro del límite
+                }
+            });
+        })
         .catch(error => {
             console.error(error);
         });
 
-        ClassicEditor
+    ClassicEditor
         .create(document.querySelector('#bastionado'), {
-        
-        toolbar: ['bold', 'italic', 'link', 'undo', 'redo'] // Añadir la opción de cargar imágenes
-    })
+            toolbar: ['bold', 'italic', 'link', 'undo', 'redo']
+        })
+        .then(editor => {
+            const maxLength = 4000;
+            const contador = document.getElementById("contador1");
+
+            editor.model.document.on('change:data', () => {
+                let contenido = editor.getData(); // Quita etiquetas HTML
+                contador.textContent = contenido.length + " / " + maxLength + " caracteres";
+
+                if (contenido.length >= maxLength) {
+                    contador.style.color = "red"; // Pone el contador en rojo
+                } else {
+                    contador.style.color = "black"; // Color normal si está dentro del límite
+                }
+            });
+        })
         .catch(error => {
             console.error(error);
         });
+        
 
+    
+
+
+
+document.getElementById("observacion").addEventListener("input", function() {
+    let max = this.maxLength;
+    let currentLength = this.value.length;
+    let aviso = document.getElementById("aviso");
+
+    if (currentLength >= max) {
+        aviso.style.display = "block"; // Muestra el aviso
+    } else {
+        aviso.style.display = "none";  // Oculta el aviso
+    }
+});
     
 </script>
 @endsection

@@ -63,8 +63,11 @@ class ProyectoController extends Controller
     }
     public function delete(Request $request, Proyecto $proyecto)
     {
-        $proyecto->delete();
-        return redirect()->route('proyecto.misproyectos');
+        if ($proyecto->user->id==$user->id){
+            $proyecto->delete();
+            return redirect()->route('proyecto.misproyectos');
+        }
+        else {abort(403, 'Acceso prohibido');}
     }
 
     public function edit(Request $request, Proyecto $proyecto)
@@ -164,19 +167,24 @@ class ProyectoController extends Controller
     
     public function post_prueba_detallada(Request $request,ProyectoPrueba $proyecto_prueba)
     {
-        // Convertir $superada en booleano para mayor seguridad
-        $post=$request->validate([
-            'realizacion' => 'nullable|string',
-            'bastionado' => 'nullable|string',
-            'observación' => 'nullable|string',
-        ]);
         
-    
-        $proyecto_prueba->update($post);
         $proyecto=Proyecto::where('id',$proyecto_prueba->proyecto_id)->first();
-        $prueba=Prueba::where('id',$proyecto_prueba->prueba_id)->first();
-        // Redirigir a la página anterior
-        return redirect()->route('proyecto.pruebas',['categoria'=>$prueba->categoria,'proyecto'=>$proyecto]);
+        $user=Auth::user();
+        if ($proyecto->user->id==$user->id){
+            // Convertir $superada en booleano para mayor seguridad
+            $post=$request->validate([
+                'realizacion' => 'nullable|string|max:4000',
+                'bastionado' => 'nullable|string|max:4000',
+                'observación' => 'nullable|string|max:3000',
+            ]);
+            
+            $proyecto_prueba->update($post);
+            $proyecto=Proyecto::where('id',$proyecto_prueba->proyecto_id)->first();
+            $prueba=Prueba::where('id',$proyecto_prueba->prueba_id)->first();
+            // Redirigir a la página anterior
+            return redirect()->route('proyecto.pruebas',['categoria'=>$prueba->categoria,'proyecto'=>$proyecto]);
+        }
+        else{abort(403, 'Acceso prohibido');}
     
     }
 }
